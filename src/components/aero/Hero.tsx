@@ -49,18 +49,18 @@ export function Hero({ guestName, guestRole }: { guestName: string; guestRole: s
           style={rise(800)}
           aria-label="Jump to your invitation"
         >
-          <div className="grid -rotate-2 grid-cols-[1fr_5.25rem] bg-ivory text-left text-ink shadow-ticket transition-transform duration-700 ease-out group-hover:rotate-0 group-hover:-translate-y-1">
-            <div className="relative px-5 py-4">
+          <div className="grid -rotate-2 grid-cols-[1fr_7.5rem] bg-ivory text-left text-ink shadow-ticket transition-transform duration-700 ease-out group-hover:rotate-0 group-hover:-translate-y-1">
+            <div className="relative min-w-0 px-5 py-4">
               <span className="absolute inset-y-0 left-0 w-1 bg-burgundy" aria-hidden="true" />
               <p className="label-caps text-[0.58rem] text-burgundy">Invitation for</p>
-              <p className="mt-1 truncate font-display text-2xl italic leading-tight">
+              <p className="mt-1 font-display text-[clamp(1.1rem,4.5vw,1.5rem)] italic leading-tight">
                 {guestName}
               </p>
               <p className="label-caps mt-1 text-[0.55rem] text-ink-soft">{guestRole}</p>
             </div>
-            <div className="ticket-perforation flex flex-col items-center justify-center px-2 text-center">
+            <div className="ticket-perforation flex flex-col items-center justify-center px-1 text-center">
               <p className="font-display text-2xl leading-none">30</p>
-              <p className="label-caps mt-1 text-[0.55rem] tracking-[0.25em] text-burgundy">
+              <p className="label-caps mt-1 whitespace-nowrap text-[0.55rem] tracking-[0.12em] text-burgundy">
                 Nov 26
               </p>
             </div>
