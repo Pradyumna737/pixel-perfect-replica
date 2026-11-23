@@ -1,3 +1,4 @@
+
 /**
  * The 16 seniors of Aero Club NITTE, Batch 2023–2027.
  * Portraits live in public/assets/portraits/.
@@ -97,7 +98,7 @@ export const SENIORS: readonly Senior[] = [
   },
 ].map((s) => {
   const framing: Record<string, { scale: number; offsetY: number }> = {
-    // Chinmay: tighter upper-body framing
+    // Chinmay: close upper-body framing
     chinmay: { scale: 1.5, offsetY: 0 },
 
     // Samruddha: unchanged
@@ -106,26 +107,26 @@ export const SENIORS: readonly Senior[] = [
     // Shreyas: unchanged
     shreyas: { scale: 0.88, offsetY: 4 },
 
-    // Meghraj: move portrait further down
-    meghraj: { scale: 0.76, offsetY: 7 },
+    // Meghraj: move further down
+    meghraj: { scale: 0.76, offsetY: 10 },
 
-    // Sakshath: strong upper-body zoom
-    sakshath: { scale: 1.65, offsetY: 0 },
+    // Sakshath: stronger upper-body zoom
+    sakshath: { scale: 2.0, offsetY: 0 },
 
-    // Rakshith: strong upper-body zoom
-    rakshith: { scale: 1.65, offsetY: 0 },
+    // Rakshith: stronger upper-body zoom
+    rakshith: { scale: 2.0, offsetY: 0 },
 
-    // Aneesh: zoom out and move down to reveal his head
-    aneesh: { scale: 0.68, offsetY: 4 },
+    // Aneesh: reveal the complete head
+    aneesh: { scale: 0.62, offsetY: 8 },
 
-    // Shishir: slight zoom and move down
+    // Shishir: slight zoom and downward positioning
     shishir: { scale: 1.12, offsetY: 3 },
 
-    // Vinod: unchanged
-    vinod: { scale: 0.78, offsetY: 2 },
+    // Vinod: zoom out and move down to reveal the head
+    vinod: { scale: 0.65, offsetY: 8 },
 
-    // Bhoomika: zoom in
-    bhoomika: { scale: 1.3, offsetY: 0 },
+    // Bhoomika: slightly closer framing
+    bhoomika: { scale: 1.45, offsetY: 0 },
 
     // Srinidhi: unchanged
     srinidhi: { scale: 1.0, offsetY: 2 },
