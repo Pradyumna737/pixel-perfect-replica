@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Senior names, designations and event details live only in `src/data/seniors.ts`; components read from it so one edit updates every page and the boarding pass.
+- Visitor identity comes from the `?name=` URL param via `resolvePassenger` in `src/lib/seniors.ts`; unknown names must resolve to a guest with no photo, never to another senior.
+- Logo and portraits are plain files under `public/assets/` (fixed, replaceable paths) and are referenced through `assetUrl()` so a sub-path deploy (e.g. GitHub Pages) keeps working.
