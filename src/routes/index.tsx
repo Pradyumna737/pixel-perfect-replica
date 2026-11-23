@@ -39,7 +39,9 @@ function AeroJourney() {
   const senior = passenger.kind === "senior" ? passenger.senior : null;
   const displayName = senior?.name ?? "Honoured Guest";
   const designation = senior?.designation ?? EVENT.club;
-  const seat = senior ? String(SENIORS.indexOf(senior) + 1).padStart(2, "0") : null;
+  const seat = senior
+    ? String(SENIORS.indexOf(senior) + 1).padStart(2, "0")
+    : null;
 
   return (
     <main className="bg-navy">
@@ -67,11 +69,18 @@ function AeroJourney() {
               className="absolute -left-7 -top-7 h-16 w-16 border-l border-t border-burgundy/40 sm:-left-9 sm:-top-9"
               aria-hidden="true"
             />
+
             <Reveal variant="image">
               <Portrait
                 key={senior?.slug ?? "guest"}
                 name={displayName}
-                {...(senior ? { image: senior.image } : {})}
+                {...(senior
+                  ? {
+                      image: senior.image,
+                      portraitScale: senior.portraitScale,
+                      portraitOffsetY: senior.portraitOffsetY,
+                    }
+                  : {})}
               />
             </Reveal>
           </div>
@@ -91,7 +100,10 @@ function AeroJourney() {
             </Reveal>
 
             <Reveal delay={240}>
-              <div className="mx-auto mt-7 h-px w-16 bg-gold md:mx-0" aria-hidden="true" />
+              <div
+                className="mx-auto mt-7 h-px w-16 bg-gold md:mx-0"
+                aria-hidden="true"
+              />
               <p className="mx-auto mt-7 max-w-md font-serif text-xl italic leading-relaxed text-burgundy sm:text-2xl md:mx-0">
                 {designation}
               </p>
@@ -108,8 +120,9 @@ function AeroJourney() {
             {passenger.kind === "unknown" ? (
               <Reveal delay={480}>
                 <p className="mx-auto mt-8 max-w-md font-serif text-base leading-relaxed text-ink-soft md:mx-0">
-                  We couldn't find “{passenger.requestedName}” on our passenger list. Please check
-                  the personal link you received — you're warmly welcome all the same.
+                  We couldn't find “{passenger.requestedName}” on our passenger
+                  list. Please check the personal link you received — you're
+                  warmly welcome all the same.
                 </p>
               </Reveal>
             ) : null}
@@ -120,7 +133,10 @@ function AeroJourney() {
       <Invitation name={displayName} designation={designation} />
 
       <footer className="bg-navy px-6 pb-14 pt-6 text-center">
-        <div className="mx-auto mb-8 h-px w-40 gold-rule" aria-hidden="true" />
+        <div
+          className="mx-auto mb-8 h-px w-40 gold-rule"
+          aria-hidden="true"
+        />
         <p className="font-display text-xl italic text-gold-light">
           With gratitude, for every flight together.
         </p>
@@ -132,7 +148,13 @@ function AeroJourney() {
   );
 }
 
-function Invitation({ name, designation }: { name: string; designation: string }) {
+function Invitation({
+  name,
+  designation,
+}: {
+  name: string;
+  designation: string;
+}) {
   const [open, setOpen] = useState(false);
   const passRef = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
@@ -140,7 +162,10 @@ function Invitation({ name, designation }: { name: string; designation: string }
   const openInvitation = () => {
     setOpen(true);
     window.setTimeout(() => {
-      passRef.current?.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+      passRef.current?.scrollIntoView({
+        behavior: reduced ? "auto" : "smooth",
+        block: "center",
+      });
     }, 120);
   };
 
@@ -153,7 +178,9 @@ function Invitation({ name, designation }: { name: string; designation: string }
       <div className="h-36 bg-dusk-up sm:h-52" aria-hidden="true" />
 
       <div className="mx-auto max-w-4xl px-6 pb-24 pt-12 text-center sm:pb-32">
-        <Reveal className="label-caps text-gold">You are cordially invited</Reveal>
+        <Reveal className="label-caps text-gold">
+          You are cordially invited
+        </Reveal>
 
         <Reveal
           as="h2"
@@ -180,7 +207,9 @@ function Invitation({ name, designation }: { name: string; designation: string }
             ].map(([label, value]) => (
               <div key={label} className="px-4 py-6">
                 <dt className="label-caps text-gold">{label}</dt>
-                <dd className="mt-2 font-display text-2xl whitespace-nowrap text-ivory sm:text-[1.45rem] md:text-[1.6rem]">{value}</dd>
+                <dd className="mt-2 whitespace-nowrap font-display text-2xl text-ivory sm:text-[1.45rem] md:text-[1.6rem]">
+                  {value}
+                </dd>
               </div>
             ))}
           </dl>
@@ -206,7 +235,13 @@ function Invitation({ name, designation }: { name: string; designation: string }
         </Reveal>
 
         <div id="boarding-pass" className="mt-10">
-          {open ? <BoardingPass ref={passRef} name={name} designation={designation} /> : null}
+          {open ? (
+            <BoardingPass
+              ref={passRef}
+              name={name}
+              designation={designation}
+            />
+          ) : null}
         </div>
       </div>
     </section>
