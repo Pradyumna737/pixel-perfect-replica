@@ -9,10 +9,24 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+const repositoryBase = process.env.GITHUB_ACTIONS ? "/pixel-perfect-replica/" : "/";
+
 export default defineConfig({
+  vite: {
+    // GitHub Pages serves this project from a repository subpath.
+    base: repositoryBase,
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
     server: { entry: "server" },
+    // This invitation is a static, client-interactive site. Prerender its single route
+    // so GitHub Pages can host it without a Node/server runtime. ?name= is resolved
+    // by the client router after hydration.
+    prerender: {
+      enabled: true,
+      autoStaticPathsDiscovery: false,
+      crawlLinks: false,
+      pages: [{ path: "/", prerender: { enabled: true, outputPath: "/index.html" } }],
+    },
   },
 });

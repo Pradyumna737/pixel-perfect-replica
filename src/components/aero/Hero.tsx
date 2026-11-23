@@ -90,10 +90,7 @@ export function Hero({ guestName, guestRole }: { guestName: string; guestRole: s
                   className="pointer-events-none absolute inset-[10px] border border-burgundy/25"
                   aria-hidden="true"
                 />
-                <p className="label-caps relative text-[0.5rem] tracking-[0.24em] text-ink-soft">
-                  Admit one
-                </p>
-                <p className="relative mt-2 font-display text-[2.6rem] leading-none">30</p>
+                <p className="relative font-display text-[2.6rem] leading-none">30</p>
                 <p className="label-caps relative mt-1 whitespace-nowrap text-[0.56rem] tracking-[0.2em]">
                   Nov 2026
                 </p>
