@@ -1,3 +1,4 @@
+```ts
 /**
  * The 16 seniors of Aero Club NITTE, Batch 2023–2027.
  * Portraits live in public/assets/portraits/.
@@ -7,6 +8,8 @@ export interface Senior {
   name: string;
   designation: string;
   image: string;
+  portraitScale: number;
+  portraitOffsetY: number;
 }
 
 const portrait = (slug: string) =>
@@ -93,7 +96,31 @@ export const SENIORS: readonly Senior[] = [
     name: "Vasavi Joshi",
     designation: "Finance Team Member",
   },
-].map((s) => ({ ...s, image: portrait(s.slug) }));
+].map((s) => {
+  const framing: Record<string, { scale: number; offsetY: number }> = {
+    chinmay: { scale: 1.2, offsetY: 0 },
+    samruddha: { scale: 0.88, offsetY: 4 },
+    shreyas: { scale: 0.88, offsetY: 4 },
+    meghraj: { scale: 0.76, offsetY: 2 },
+    sakshath: { scale: 1.22, offsetY: 0 },
+    rakshith: { scale: 1.22, offsetY: 0 },
+    aneesh: { scale: 0.78, offsetY: 2 },
+    shishir: { scale: 1.0, offsetY: 2 },
+    vinod: { scale: 0.78, offsetY: 2 },
+    bhoomika: { scale: 1.12, offsetY: 0 },
+    srinidhi: { scale: 1.0, offsetY: 2 },
+    vasavi: { scale: 1.0, offsetY: 2 },
+  };
+
+  const crop = framing[s.slug] ?? { scale: 1, offsetY: 0 };
+
+  return {
+    ...s,
+    image: portrait(s.slug),
+    portraitScale: crop.scale,
+    portraitOffsetY: crop.offsetY,
+  };
+});
 
 export const DEFAULT_SENIOR_SLUG = "gagandeep";
 
@@ -110,3 +137,4 @@ export const EVENT = {
 } as const;
 
 export const LOGO_PATH = "assets/NEW AERO LOGO TRANSPARENT.png";
+```
