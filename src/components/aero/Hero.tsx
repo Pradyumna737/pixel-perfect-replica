@@ -1,14 +1,12 @@
 import type { CSSProperties } from "react";
 
-import { EVENT } from "@/data/seniors";
-
 import { FlightPath } from "./FlightPath";
 import { LogoMedallion } from "./Logo";
 import { PlaneGlyph } from "./PlaneGlyph";
 
 const rise = (ms: number) => ({ "--rise-delay": `${ms}ms` }) as CSSProperties;
 
-export function Hero({ guestName }: { guestName: string }) {
+export function Hero({ guestName, guestRole }: { guestName: string; guestRole: string }) {
   return (
     <header className="relative isolate flex min-h-[100svh] flex-col items-center justify-center overflow-hidden bg-night px-6 pb-32 pt-16 text-center">
       <div className="inset-frame" aria-hidden="true" />
@@ -58,7 +56,7 @@ export function Hero({ guestName }: { guestName: string }) {
               <p className="mt-1 truncate font-display text-2xl italic leading-tight">
                 {guestName}
               </p>
-              <p className="label-caps mt-1 text-[0.55rem] text-ink-soft">{EVENT.venue}</p>
+              <p className="label-caps mt-1 text-[0.55rem] text-ink-soft">{guestRole}</p>
             </div>
             <div className="ticket-perforation flex flex-col items-center justify-center px-2 text-center">
               <p className="font-display text-2xl leading-none">30</p>
@@ -70,8 +68,7 @@ export function Hero({ guestName }: { guestName: string }) {
         </a>
       </div>
 
-      <div className="absolute inset-x-0 bottom-9 z-10 flex items-end justify-between px-8 sm:px-14">
-        <p className="label-caps text-[0.58rem] text-gold/70">Dep · 2023</p>
+      <div className="absolute inset-x-0 bottom-9 z-10 flex items-end justify-center px-8 sm:px-14">
         <a
           href="#passenger"
           className="flex flex-col items-center gap-3 text-gold-light/80"
@@ -82,7 +79,6 @@ export function Hero({ guestName }: { guestName: string }) {
             <span className="absolute inset-x-0 top-0 h-1/3 animate-scroll-cue bg-gold" />
           </span>
         </a>
-        <p className="label-caps text-[0.58rem] text-gold/70">Arr · 2027</p>
       </div>
     </header>
   );

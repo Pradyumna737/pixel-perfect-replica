@@ -39,12 +39,11 @@ function AeroJourney() {
   const senior = passenger.kind === "senior" ? passenger.senior : null;
   const displayName = senior?.name ?? "Honoured Guest";
   const designation = senior?.designation ?? EVENT.club;
-  const firstName = senior ? (senior.name.split(" ")[0] ?? senior.name) : "Honoured Guest";
   const seat = senior ? String(SENIORS.indexOf(senior) + 1).padStart(2, "0") : null;
 
   return (
     <main className="bg-navy">
-      <Hero guestName={firstName} />
+      <Hero guestName={displayName} guestRole={designation} />
 
       {/* ---------- Personal portrait ---------- */}
       <section
