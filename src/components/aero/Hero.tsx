@@ -45,24 +45,60 @@ export function Hero({ guestName, guestRole }: { guestName: string; guestRole: s
 
         <a
           href="#invitation"
-          className="group mt-12 block w-[min(100%,21rem)] animate-soft-rise"
+          className="group mt-12 block w-[min(100%,24rem)] animate-soft-rise"
           style={rise(800)}
           aria-label="Jump to your invitation"
         >
-          <div className="grid -rotate-2 grid-cols-[1fr_7.5rem] bg-ivory text-left text-ink shadow-ticket transition-transform duration-700 ease-out group-hover:rotate-0 group-hover:-translate-y-1">
-            <div className="relative min-w-0 px-5 py-4">
-              <span className="absolute inset-y-0 left-0 w-1 bg-burgundy" aria-hidden="true" />
-              <p className="label-caps text-[0.58rem] text-burgundy">Invitation for</p>
-              <p className="mt-1 font-display text-[clamp(1.1rem,4.5vw,1.5rem)] italic leading-tight">
-                {guestName}
-              </p>
-              <p className="label-caps mt-1 text-[0.55rem] text-ink-soft">{guestRole}</p>
-            </div>
-            <div className="ticket-perforation flex flex-col items-center justify-center px-1 text-center">
-              <p className="font-display text-2xl leading-none">30</p>
-              <p className="label-caps mt-1 whitespace-nowrap text-[0.55rem] tracking-[0.12em] text-burgundy">
-                Nov 26
-              </p>
+          <div className="drop-ticket -rotate-2 transition-transform duration-700 ease-out group-hover:rotate-0 group-hover:-translate-y-1">
+            <div className="ticket-cut grid grid-cols-[1fr_6.5rem] text-left [--stub:6.5rem]">
+              {/* Main panel — burgundy with gold engraving */}
+              <div className="relative min-w-0 bg-burgundy-card px-6 pb-6 pt-7 text-center">
+                <div className="guilloche absolute inset-0" aria-hidden="true" />
+                <div
+                  className="pointer-events-none absolute inset-[10px] border border-gold/55"
+                  aria-hidden="true"
+                />
+                <div
+                  className="pointer-events-none absolute inset-[14px] border border-gold/20"
+                  aria-hidden="true"
+                />
+
+                <div className="relative">
+                  <div className="flex items-center justify-center gap-2.5 text-gold">
+                    <span className="h-px w-6 bg-gold/70" aria-hidden="true" />
+                    <p className="label-caps text-[0.56rem] text-gold-light">Invitation for</p>
+                    <span className="h-px w-6 bg-gold/70" aria-hidden="true" />
+                  </div>
+
+                  <p className="mt-3 font-display text-[clamp(1.35rem,5.2vw,1.75rem)] italic leading-[1.1] text-ivory">
+                    {guestName}
+                  </p>
+
+                  <div className="mx-auto mt-3 flex w-24 items-center gap-2 text-gold" aria-hidden="true">
+                    <span className="gold-rule flex-1" />
+                    <PlaneGlyph className="h-2 w-3" />
+                    <span className="gold-rule flex-1" />
+                  </div>
+
+                  <p className="label-caps mt-3 text-[0.56rem] text-gold-light/90">{guestRole}</p>
+                </div>
+              </div>
+
+              {/* Stub — ivory with the date */}
+              <div className="relative flex flex-col items-center justify-center border-l-[1.5px] border-dashed border-burgundy/45 bg-ivory px-2 text-center text-burgundy">
+                <div
+                  className="pointer-events-none absolute inset-[10px] border border-burgundy/25"
+                  aria-hidden="true"
+                />
+                <p className="label-caps relative text-[0.5rem] tracking-[0.24em] text-ink-soft">
+                  Admit one
+                </p>
+                <p className="relative mt-2 font-display text-[2.6rem] leading-none">30</p>
+                <p className="label-caps relative mt-1 whitespace-nowrap text-[0.56rem] tracking-[0.2em]">
+                  Nov 2026
+                </p>
+                <span className="relative mt-2.5 h-px w-8 bg-gold" aria-hidden="true" />
+              </div>
             </div>
           </div>
         </a>

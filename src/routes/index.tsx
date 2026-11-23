@@ -49,7 +49,7 @@ function AeroJourney() {
       <section
         id="passenger"
         aria-labelledby="passenger-name"
-        className="relative bg-ivory text-ink"
+        className="relative bg-ivory-wash text-ink"
       >
         <div className="h-36 bg-dusk-down sm:h-52" aria-hidden="true" />
 

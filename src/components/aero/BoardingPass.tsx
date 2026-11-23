@@ -32,16 +32,16 @@ export const BoardingPass = forwardRef<HTMLElement, BoardingPassProps>(function 
     <article
       ref={ref}
       aria-label={`Boarding pass for ${name}`}
-      className="relative mx-auto grid w-full max-w-[46rem] animate-pass-unfold grid-cols-[1fr_5.75rem] bg-ivory text-left text-ink shadow-ticket sm:grid-cols-[1fr_10.5rem]"
+      className="drop-ticket relative mx-auto w-full max-w-[46rem] animate-pass-unfold text-left"
     >
-      <div
-        className="pointer-events-none absolute inset-[5px] border border-gold/60"
-        aria-hidden="true"
-      />
-
-      <div className="relative min-w-0 py-4 pl-5 pr-3 sm:py-6 sm:pl-9 sm:pr-7">
+      <div className="ticket-cut grid grid-cols-[1fr_5.75rem] text-ink [--stub:5.75rem] sm:grid-cols-[1fr_10.5rem] sm:[--stub:10.5rem]">
+      <div className="relative min-w-0 bg-ivory-wash py-4 pl-6 pr-3 sm:py-6 sm:pl-10 sm:pr-7">
+        <div
+          className="pointer-events-none absolute inset-y-[8px] left-[8px] right-[12px] border border-gold/60"
+          aria-hidden="true"
+        />
         <span
-          className="absolute inset-y-[5px] left-[5px] w-1 bg-burgundy sm:w-1.5"
+          className="absolute inset-y-[8px] left-[8px] w-1 bg-burgundy sm:w-1.5"
           aria-hidden="true"
         />
 
@@ -78,9 +78,13 @@ export const BoardingPass = forwardRef<HTMLElement, BoardingPassProps>(function 
         </dl>
       </div>
 
-      <div className="ticket-perforation flex flex-col justify-between px-3 py-4 sm:px-5 sm:py-6">
+      <div className="relative flex flex-col justify-between border-l-[1.5px] border-dashed border-gold/70 bg-burgundy-card px-3 py-4 text-ivory sm:px-5 sm:py-6">
+        <div
+          className="pointer-events-none absolute inset-y-[8px] left-[12px] right-[8px] border border-gold/45"
+          aria-hidden="true"
+        />
         <div>
-          <p className="label-caps text-[0.5rem] tracking-[0.24em] text-burgundy sm:text-[0.6rem]">
+          <p className="label-caps text-[0.5rem] tracking-[0.24em] text-gold-light sm:text-[0.6rem]">
             Admit One
           </p>
           <div className="mt-2 flex items-center gap-1.5 text-gold">
@@ -89,22 +93,23 @@ export const BoardingPass = forwardRef<HTMLElement, BoardingPassProps>(function 
           </div>
         </div>
 
-        <div className="text-ink">
+        <div className="text-ivory">
           <p className="font-display text-3xl leading-none sm:text-5xl">30</p>
           <p className="label-caps mt-1 text-[0.5rem] tracking-[0.22em] sm:text-[0.6rem]">
             Nov 2026
           </p>
-          <p className="label-caps text-[0.5rem] tracking-[0.22em] text-ink-soft sm:text-[0.6rem]">
+          <p className="label-caps text-[0.5rem] tracking-[0.22em] text-gold-light/80 sm:text-[0.6rem]">
             {EVENT.time}
           </p>
         </div>
 
         <div>
-          <div className="barcode h-7 w-full opacity-85 sm:h-9" aria-hidden="true" />
-          <p className="label-caps mt-1.5 text-[0.45rem] tracking-[0.2em] text-ink-soft sm:text-[0.55rem]">
+          <div className="barcode-gold h-7 w-full opacity-80 sm:h-9" aria-hidden="true" />
+          <p className="label-caps mt-1.5 text-[0.45rem] tracking-[0.2em] text-gold-light/75 sm:text-[0.55rem]">
             {EVENT.batch}
           </p>
         </div>
+      </div>
       </div>
     </article>
   );
