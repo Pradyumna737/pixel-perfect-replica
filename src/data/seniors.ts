@@ -10,9 +10,7 @@ export interface Senior {
 }
 
 const portrait = (slug: string) =>
-  slug === "gagandeep"
-    ? "assets/portraits/gagandeep.png"
-    : `assets/portraits/${slug}.jpg`;
+  `assets/portraits/${slug}.png`;
 
 export const SENIORS: readonly Senior[] = [
   {
