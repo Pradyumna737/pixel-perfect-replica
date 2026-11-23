@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from "react";
 
 import { useParallax } from "@/hooks/use-parallax";
@@ -8,7 +9,6 @@ import { PlaneGlyph } from "./PlaneGlyph";
 
 interface PortraitProps {
   name: string;
-  /** Public asset path; omit for guests so no senior's photo can ever appear. */
   image?: string;
   portraitScale?: number;
   portraitOffsetY?: number;
@@ -16,7 +16,6 @@ interface PortraitProps {
 
 type Status = "loading" | "loaded" | "error";
 
-/** Individual portrait with a clean placeholder underneath. */
 export function Portrait({
   name,
   image,
@@ -28,7 +27,9 @@ export function Portrait({
   const imgRef = useRef<HTMLImageElement>(null);
   const reduced = useReducedMotion();
 
-  const [status, setStatus] = useState<Status>(image ? "loading" : "error");
+  const [status, setStatus] = useState<Status>(
+    image ? "loading" : "error"
+  );
 
   useParallax(frameRef, layerRef, 28, !reduced);
 
@@ -45,19 +46,26 @@ export function Portrait({
       className="relative aspect-[3/4] w-full overflow-hidden bg-navy shadow-portrait"
     >
       <div ref={layerRef} className="absolute inset-0 will-change-transform">
+
+        {/* Background remains visible through transparent PNG areas */}
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-night">
-          {image ? (
+
+          {/* Show initials only while loading or if the photo fails */}
+          {image && status !== "loaded" ? (
             <span className="font-display text-5xl italic text-gold-light sm:text-6xl">
               {initials(name)}
             </span>
-          ) : (
+          ) : null}
+
+          {/* Guest placeholder */}
+          {!image ? (
             <>
               <PlaneGlyph className="h-10 w-12 -rotate-12 text-gold" />
               <p className="label-caps mt-6 text-[0.58rem] text-gold/70">
                 Aero Club NITTE
               </p>
             </>
-          )}
+          ) : null}
         </div>
 
         {image && status !== "error" ? (
@@ -76,6 +84,7 @@ export function Portrait({
             }}
           />
         ) : null}
+
       </div>
     </div>
   );
