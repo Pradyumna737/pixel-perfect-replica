@@ -1,4 +1,3 @@
-```ts
 /**
  * The 16 seniors of Aero Club NITTE, Batch 2023–2027.
  * Portraits live in public/assets/portraits/.
@@ -98,17 +97,40 @@ export const SENIORS: readonly Senior[] = [
   },
 ].map((s) => {
   const framing: Record<string, { scale: number; offsetY: number }> = {
-    chinmay: { scale: 1.2, offsetY: 0 },
+    // Chinmay: tighter upper-body framing
+    chinmay: { scale: 1.5, offsetY: 0 },
+
+    // Samruddha: unchanged
     samruddha: { scale: 0.88, offsetY: 4 },
+
+    // Shreyas: unchanged
     shreyas: { scale: 0.88, offsetY: 4 },
-    meghraj: { scale: 0.76, offsetY: 2 },
-    sakshath: { scale: 1.22, offsetY: 0 },
-    rakshith: { scale: 1.22, offsetY: 0 },
-    aneesh: { scale: 0.78, offsetY: 2 },
-    shishir: { scale: 1.0, offsetY: 2 },
+
+    // Meghraj: move portrait further down
+    meghraj: { scale: 0.76, offsetY: 7 },
+
+    // Sakshath: strong upper-body zoom
+    sakshath: { scale: 1.65, offsetY: 0 },
+
+    // Rakshith: strong upper-body zoom
+    rakshith: { scale: 1.65, offsetY: 0 },
+
+    // Aneesh: zoom out and move down to reveal his head
+    aneesh: { scale: 0.68, offsetY: 4 },
+
+    // Shishir: slight zoom and move down
+    shishir: { scale: 1.12, offsetY: 3 },
+
+    // Vinod: unchanged
     vinod: { scale: 0.78, offsetY: 2 },
-    bhoomika: { scale: 1.12, offsetY: 0 },
+
+    // Bhoomika: zoom in
+    bhoomika: { scale: 1.3, offsetY: 0 },
+
+    // Srinidhi: unchanged
     srinidhi: { scale: 1.0, offsetY: 2 },
+
+    // Vasavi: unchanged
     vasavi: { scale: 1.0, offsetY: 2 },
   };
 
@@ -137,4 +159,3 @@ export const EVENT = {
 } as const;
 
 export const LOGO_PATH = "assets/NEW AERO LOGO TRANSPARENT.png";
-```
