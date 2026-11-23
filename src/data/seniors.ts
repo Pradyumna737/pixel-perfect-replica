@@ -108,7 +108,7 @@ export const SENIORS: readonly Senior[] = [
     shreyas: { scale: 0.88, offsetY: 4 },
 
     // Meghraj: move further down
-    meghraj: { scale: 0.76, offsetY: 10 },
+    meghraj: { scale: 1.05, offsetY: 10 },
 
     // Sakshath: stronger upper-body zoom
     sakshath: { scale: 2.0, offsetY: 0 },
