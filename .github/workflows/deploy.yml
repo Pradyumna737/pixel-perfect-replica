@@ -21,39 +21,50 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
-          cache: npm
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Build website
-        run: npm run build
+        run: bun run build
 
-      - name: Verify website output
+      - name: Locate static website
+        id: site
+        shell: bash
         run: |
-          if [ ! -f dist/client/index.html ]; then
-            echo "ERROR: dist/client/index.html was not generated."
-            find dist -maxdepth 3 -type f | head -100
-            exit 1
-          fi
+          for dir in dist/client .output/public dist
+          do
+            if [ -f "$dir/index.html" ]; then
+              echo "path=$dir" >> "$GITHUB_OUTPUT"
+              echo "Website found in $dir"
+              exit 0
+            fi
+          done
+
+          echo "ERROR: Static index.html not found."
+          find dist .output -maxdepth 4 -type f 2>/dev/null | head -100
+          exit 1
 
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/client
+          path: ${{ steps.site.outputs.path }}
 
   deploy:
+    runs-on: ubuntu-latest
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
 
     steps:
       - name: Deploy to GitHub Pages
