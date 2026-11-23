@@ -1,4 +1,4 @@
-```ts
+
 /**
  * The 16 seniors of Aero Club NITTE, Batch 2023–2027.
  * Portraits live in public/assets/portraits/.
@@ -137,4 +137,4 @@ export const EVENT = {
 } as const;
 
 export const LOGO_PATH = "assets/NEW AERO LOGO TRANSPARENT.png";
-```
+
