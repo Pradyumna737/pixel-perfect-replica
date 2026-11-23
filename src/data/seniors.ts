@@ -98,16 +98,16 @@ export const SENIORS: readonly Senior[] = [
   },
 ].map((s) => {
   const framing: Record<string, { scale: number; offsetY: number }> = {
-    chinmay: { scale: 1.2, offsetY: 0 },
+    chinmay: { scale: 1.4, offsetY: 0 },
     samruddha: { scale: 0.88, offsetY: 4 },
     shreyas: { scale: 0.88, offsetY: 4 },
     meghraj: { scale: 1.15, offsetY: 15 },
-    sakshath: { scale: 1.22, offsetY: 0 },
-    rakshith: { scale: 1.22, offsetY: 0 },
-    aneesh: { scale: 0.78, offsetY: 2 },
+    sakshath: { scale: 1.38, offsetY: 8 },
+    rakshith: { scale: 1.38, offsetY: 8 },
+    aneesh: { scale: 0.78, offsetY: 14 },
     shishir: { scale: 1.0, offsetY: 2 },
-    vinod: { scale: 0.78, offsetY: 2 },
-    bhoomika: { scale: 1.12, offsetY: 0 },
+    vinod: { scale: 0.78, offsetY: 14 },
+    bhoomika: { scale: 1.18, offsetY: -4 },
     srinidhi: { scale: 1.0, offsetY: 2 },
     vasavi: { scale: 1.0, offsetY: 2 },
   };
@@ -137,4 +137,3 @@ export const EVENT = {
 } as const;
 
 export const LOGO_PATH = "assets/NEW AERO LOGO TRANSPARENT.png";
-
