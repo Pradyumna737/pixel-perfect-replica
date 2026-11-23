@@ -1,7 +1,6 @@
 /**
  * The 16 seniors of Aero Club NITTE, Batch 2023–2027.
- * Names and designations must stay exactly as given by the club.
- * Portraits live in public/assets/portraits/<slug>.jpg and can be replaced in place.
+ * Portraits live in public/assets/portraits/.
  */
 export interface Senior {
   slug: string;
@@ -16,35 +15,86 @@ const portrait = (slug: string) =>
     : `assets/portraits/${slug}.jpg`;
 
 export const SENIORS: readonly Senior[] = [
-  { slug: "gagandeep", name: "Gagandeep Kayara Gangadhara", designation: "President" },
+  {
+    slug: "gagandeep",
+    name: "Gagandeep Kayara Gangadhara",
+    designation: "President · 2025–2026",
+  },
   {
     slug: "chinmay",
     name: "Chinmay Kulkarni",
-    designation:
-      "Technical Head, Documentation Head, Marketing Head, Competition and Flying Incharge",
+    designation: "Technical Head · 2025–2026",
   },
-  { slug: "samruddha", name: "Samruddha S Aithal", designation: "Finance Head" },
+  {
+    slug: "samruddha",
+    name: "Samruddha S Aithal",
+    designation: "Finance Head · 2025–2026",
+  },
   {
     slug: "shreyas",
     name: "Shreyas",
-    designation: "Inventory Head, Competition and Flying Incharge",
+    designation: "Inventory Head, Competition & Flying In-charge · 2025–2026",
   },
-  { slug: "meghraj", name: "Meghraj M", designation: "Social Media Head and Marketing" },
-  { slug: "bhanushankar", name: "Bhanushankar Bhat", designation: "Competition Incharge" },
-  { slug: "abhyudaya", name: "Abhyudaya J", designation: "Social Media" },
-  { slug: "sakshath", name: "Sakshath Shetty", designation: "Inventory" },
-  { slug: "rakshith", name: "Rakshith V Devadiga", designation: "Inventory" },
+  {
+    slug: "meghraj",
+    name: "Meghraj M",
+    designation: "Social Media Head · 2025–2026",
+  },
+  {
+    slug: "bhanushankar",
+    name: "Bhanushankar Bhat",
+    designation: "Competition In-charge Head · 2025–2026",
+  },
+  {
+    slug: "abhyudaya",
+    name: "Abhyudaya J",
+    designation: "Social Media Team Member",
+  },
+  {
+    slug: "sakshath",
+    name: "Sakshath Shetty",
+    designation: "Inventory Team Member",
+  },
+  {
+    slug: "rakshith",
+    name: "Rakshith V Devadiga",
+    designation: "Inventory Team Member",
+  },
   {
     slug: "abhijna",
     name: "Abhijna Laxmi",
-    designation: "Recruitment, Marketing and Competition Incharge",
+    designation: "Recruitment, Marketing & Competition In-charge",
   },
-  { slug: "aneesh", name: "Aneesh Prabhu", designation: "Inventory and Software" },
-  { slug: "shishir", name: "Shishir D", designation: "Competition Incharge and Software" },
-  { slug: "vinod", name: "Vinod S Shanbogue", designation: "Social Media, Inventory" },
-  { slug: "bhoomika", name: "Bhoomika", designation: "Documentation" },
-  { slug: "srinidhi", name: "Srinidhi D S", designation: "Social Media and Software" },
-  { slug: "vasavi", name: "Vasavi Joshi", designation: "Finance" },
+  {
+    slug: "aneesh",
+    name: "Aneesh Prabhu",
+    designation: "Inventory & Software Team Member",
+  },
+  {
+    slug: "shishir",
+    name: "Shishir D",
+    designation: "Competition In-charge & Software Team Member",
+  },
+  {
+    slug: "vinod",
+    name: "Vinod S Shanbogue",
+    designation: "Social Media & Inventory Team Member",
+  },
+  {
+    slug: "bhoomika",
+    name: "Bhoomika",
+    designation: "Documentation Team Member",
+  },
+  {
+    slug: "srinidhi",
+    name: "Srinidhi D S",
+    designation: "Social Media & Software Team Member",
+  },
+  {
+    slug: "vasavi",
+    name: "Vasavi Joshi",
+    designation: "Finance Team Member",
+  },
 ].map((s) => ({ ...s, image: portrait(s.slug) }));
 
 export const DEFAULT_SENIOR_SLUG = "gagandeep";
