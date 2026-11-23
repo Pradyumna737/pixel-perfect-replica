@@ -10,12 +10,14 @@ interface PortraitProps {
   name: string;
   /** Public asset path; omit for guests so no senior's photo can ever appear. */
   image?: string;
+  portraitScale?: number;
+  portraitOffsetY?: number;
 }
 
 type Status = "loading" | "loaded" | "error";
 
 /** Individual portrait with a placeholder underneath; the photo fades in once it loads. */
-export function Portrait({ name, image }: PortraitProps) {
+export function Portrait({ name, image, portraitScale = 1, portraitOffsetY = 0 }: PortraitProps) {
   const frameRef = useRef<HTMLDivElement>(null);
   const layerRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -36,7 +38,7 @@ export function Portrait({ name, image }: PortraitProps) {
       ref={frameRef}
       className="relative aspect-[3/4] w-full overflow-hidden bg-navy shadow-portrait"
     >
-      <div ref={layerRef} className="absolute inset-0 scale-[1.12] will-change-transform">
+      <div ref={layerRef} className="absolute inset-0 will-change-transform">
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-night">
           <div className="grid size-32 place-items-center rounded-full border border-gold/50 sm:size-36">
             {image ? (
@@ -47,9 +49,9 @@ export function Portrait({ name, image }: PortraitProps) {
               <PlaneGlyph className="h-10 w-12 -rotate-12 text-gold" />
             )}
           </div>
-          <p className="label-caps mt-6 text-[0.58rem] text-gold/70">
-            {image ? "Portrait arriving soon" : "Aero Club NITTE"}
-          </p>
+          {!image ? (
+            <p className="label-caps mt-6 text-[0.58rem] text-gold/70">Aero Club NITTE</p>
+          ) : null}
         </div>
 
         {image && status !== "error" ? (
@@ -60,8 +62,12 @@ export function Portrait({ name, image }: PortraitProps) {
             decoding="async"
             onLoad={() => setStatus("loaded")}
             onError={() => setStatus("error")}
-            className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[1400ms] ease-out"
-            style={{ opacity: status === "loaded" ? 1 : 0 }}
+            className="absolute inset-0 h-full w-full object-contain transition-opacity duration-[1400ms] ease-out"
+            style={{
+              opacity: status === "loaded" ? 1 : 0,
+              transform: `translateY(${portraitOffsetY}%) scale(${portraitScale})`,
+              transformOrigin: "center top",
+            }}
           />
         ) : null}
       </div>
